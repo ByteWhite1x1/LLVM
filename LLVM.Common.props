@@ -1,0 +1,32 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildThisFileDirectory)ImportBefore\*.props"
+          Condition="Exists('$(MSBuildThisFileDirectory)ImportBefore')" />
+
+  <PropertyGroup>
+    <LLVMInstallDir>C:\C++\llvm-msvc-ex\build-release-64\Release\</LLVMInstallDir>
+
+    <ClangClExecutable>$(LLVMInstallDir)bin\clang-cl.exe</ClangClExecutable>
+    <LldLinkExecutable>$(LLVMInstallDir)bin\lld-link.exe</LldLinkExecutable>
+    <LlvmLibExecutable>$(LLVMInstallDir)bin\llvm-lib.exe</LlvmLibExecutable>
+
+    <EnableMicrosoftCodeAnalysis>false</EnableMicrosoftCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>false</EnableClangTidyCodeAnalysis>
+
+    <UseClangCl>true</UseClangCl>
+    <UseLldLink>true</UseLldLink>
+    <UseLlvmLib>true</UseLlvmLib>
+
+    <IncludePath>$(VC_IncludePath)</IncludePath>
+  </PropertyGroup>
+  
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalOptions>
+        -mllvm -fla -mllvm -sub -mllvm -bcf -mllvm -string-obfus %(AdditionalOptions)
+      </AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)ImportAfter\*.props"
+          Condition="Exists('$(MSBuildThisFileDirectory)ImportAfter')" />
+</Project>
