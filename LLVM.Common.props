@@ -3,7 +3,7 @@
           Condition="Exists('$(MSBuildThisFileDirectory)ImportBefore')" />
 
   <PropertyGroup>
-    <LLVMInstallDir>C:\C++\llvm-msvc-ex\build-release-64\Release\</LLVMInstallDir>
+    <LLVMInstallDir>. . .</LLVMInstallDir>
 
     <ClangClExecutable>$(LLVMInstallDir)bin\clang-cl.exe</ClangClExecutable>
     <LldLinkExecutable>$(LLVMInstallDir)bin\lld-link.exe</LldLinkExecutable>
